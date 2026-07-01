@@ -1,73 +1,66 @@
-# React + TypeScript + Vite
+# CodeSphere Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CodeSphere Client là giao diện web của một nền tảng luyện lập trình, thi contest và thảo luận cộng đồng. Ứng dụng được xây dựng bằng React + TypeScript + Vite, hỗ trợ đăng nhập, quản lý bài toán, contest, bài viết thảo luận, tin nhắn, thông báo và khu vực admin.
 
-Currently, two official plugins are available:
+## Tính năng chính
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Luyện tập bài toán theo mức độ, chủ đề và trạng thái làm bài.
+- Xem chi tiết bài toán, nộp bài và theo dõi lịch sử submission.
+- Tham gia contest public/private, contest practice và contest official.
+- Thảo luận, đăng bài, bình luận, follow người dùng và lọc bài viết theo tag.
+- Nhắn tin thời gian thực, nhận thông báo và xem bảng xếp hạng.
+- Khu vực admin để quản lý languages, categories, tags, problems, testcases, users, posts, contests và audit logs.
 
-## React Compiler
+## Công nghệ
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- TypeScript
+- Vite
+- React Router
+- Tailwind CSS
+- Axios
+- React Hook Form + Zod
+- STOMP / SockJS cho realtime
+- Monaco Editor, TipTap, Markdown editor
 
-## Expanding the ESLint configuration
+## Yêu cầu môi trường
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js 18+ hoặc mới hơn
+- npm
+- Backend API đang chạy
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Cài đặt và chạy
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Scripts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- `npm run dev`: chạy ứng dụng ở chế độ development.
+- `npm run build`: build production.
+- `npm run lint`: kiểm tra lint.
+- `npm run preview`: xem bản build local.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Biến môi trường
+
+Tạo file `.env` ở thư mục gốc nếu cần cấu hình riêng:
+
+```env
+VITE_API_BASE_URL=http://localhost:8080/api/v1
+VITE_OAUTH2_REDIRECT_URI=http://localhost:5173/oauth2/redirect
+VITE_APP_NAME=CodeSphere
+VITE_APP_VERSION=1.0.0
 ```
+
+## Cấu trúc chính
+
+- `src/apis`: các lớp gọi API.
+- `src/components`: component dùng lại.
+- `src/pages`: các trang chức năng.
+- `src/routes`: cấu hình router và route protection.
+- `src/context`: auth context.
+- `src/services`: websocket/realtime.
+- `src/types`: kiểu dữ liệu TypeScript.
+- `src/utils`: hằng số, storage, format.
