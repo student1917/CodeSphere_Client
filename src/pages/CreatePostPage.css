@@ -1,0 +1,15 @@
+.create-post-editor .w-md-editor-text-pre,
+.create-post-editor .w-md-editor-text-pre > code,
+.create-post-editor .w-md-editor-text-input {
+  color: #111827 !important;
+  -webkit-text-fill-color: #111827 !important;
+}
+
+.create-post-editor .w-md-editor-text-input {
+  background-color: #ffffff !important;
+}
+
+.create-post-editor .w-md-editor,
+.create-post-editor .w-md-editor-content {
+  background-color: #ffffff;
+}
